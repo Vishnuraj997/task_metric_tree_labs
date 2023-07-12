@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('user_profile_id')->unsigned();
-            $table->bigInteger('notes_id');
+            $table->bigInteger('notes_id')->nullable();
             $table->string('note_text')->nullable();
             $table->timestamps();
         });

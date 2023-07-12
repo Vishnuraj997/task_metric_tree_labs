@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>note Page</title>
+    <title>Edit note</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         body {
@@ -43,7 +43,7 @@
         .form-group .btn {
             width: 100%;
             padding: 10px;
-            background-color: #4caf50;
+            background-color: blue;
             border: none;
             color: #fff;
             cursor: pointer;
@@ -51,29 +51,28 @@
         }
         
         .form-group .btn:hover {
-            background-color: #45a049;
+            background-color: blue;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Create Note</h2>
+        <h2>Edit Note</h2>
         <form id="js_user_create_note">
         @csrf
             <div class="form-group">
                 <label for="note">Note</label>
-                <textarea  id="note" name="note" rows="4" cols="50"></textarea>
+                <textarea  id="note" name="note" rows="4" cols="50">{{ $note_details->note_text }}</textarea>
                 <span class="text-danger">@error('address') {{ $message}} @enderror</span>
-                <input type="hidden" id="user_profile_id" name="user_profile_id" value="{{ $user_profile_id }}">
-                <input type="hidden" id="user_id" name="user_id" value="{{ $id }}">
+                <input type="hidden" id="user_profile_id" name="user_profile_id" value="{{ $note_details->user_profile_id }}">
+                <input type="hidden" id="notes_id" name="notes_id" value="{{ $id }}">
             </div>
             <div class="form-group">
-            <button type="submit" class="btn btn-primary" id="js_note_save">create
+            <button type="submit" class="btn btn-primary" id="js_note_save">update
             </button>
             </div>
         </form>
     </div>
- 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
   $("#js_user_create_note").submit(function(e){
@@ -81,18 +80,17 @@
     e.preventDefault();
     let note = $("#note").val();
     let user_profile_id = $("#user_profile_id").val();
-    let user_id = $("#user_id").val();
-    console.log(user_id)
+    let notes_id = $("#notes_id").val();
     let _token = $("input[name=_token]").val();
 
     $.ajax({
 
-      url:"{{ route('create-note') }}",
+      url:"{{ route('edit-note') }}",
       type:"POST",
       data:{
         note:note,
         user_profile_id:user_profile_id,
-        user_id:user_id,
+        notes_id:notes_id,
         _token:_token
       },
 

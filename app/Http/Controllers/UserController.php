@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\UserProfile;
+use App\Models\Note;
 use Hash;
 use Session;
+use Auth;
 
 class UserController extends Controller
 {
@@ -74,13 +76,15 @@ class UserController extends Controller
     }
     public function home()
     {
-    
+     
       $user_id=Session::get('loginId');
-      return view('home',compact('user_id'));
+      $mynotes=Note::where('user_id',$user_id)->get();
+      return view('home',compact('user_id','mynotes'));
     }
 
-    public function logout()
+    public function destory()
     {
         Auth::logout();
+        return redirect()->route('index');
     }
 }
