@@ -1,0 +1,28 @@
+1.There is 3 seeder to run.plaese run that seeder and migrate.
+2.after thet you can run the code.
+3.i also added the postman exported file on github named "MetricTreeLabs.postman_collection".
+4.first view
+   * login view
+    you can login as:
+
+
+      email: abc@gmail.com
+      password: password123
+
+
+   *if you dont have any account u can click register. and register the account.
+5.Main view
+  => you can see create note
+  =>after creating u want to click back to see main home page.
+ =>there you can see the notes created by you and also edit and delete option 
+NB: iam kindly saying sorry for that redirections and return are not working properly because of me.
+
+
+
+POST MAN
+
+1. There is a collection named MetricTreeLabs
+2.i added the requests for registering,login,and logout.
+3.And in the note folder you can see the request for create note,update note,view note,and delete note.
+
+
