@@ -15,19 +15,11 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('user_profile_id')->unsigned();
-            $table->bigInteger('notes_id')->nullable();
+            $table->bigInteger('notes_id')->unsigned()->nullable();
             $table->string('note_text')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
-
-        Schema::table('notes', function (Blueprint $table) {
-            $table->foreign('user_id')
-            ->references('id')->on('users');
-            });
-        Schema::table('notes', function (Blueprint $table) {
-            $table->foreign('user_profile_id')
-            ->references('id')->on('users_profile');
-            });
 
     }
 

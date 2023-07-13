@@ -43,8 +43,5 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function userprofileid()
-    {
-       return $this->hasMany(UserProfile::class,'id','user_profile_id');
-    }
+   
 }

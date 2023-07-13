@@ -62,7 +62,7 @@
         @csrf
             <div class="form-group">
                 <label for="note">Note</label>
-                <textarea  id="note" name="note" rows="4" cols="50">{{ $note_details->note_text }}</textarea>
+                <textarea  id="note_text" name="note_text" rows="4" cols="50">{{ $note_details->note_text }}</textarea>
                 <span class="text-danger">@error('address') {{ $message}} @enderror</span>
                 <input type="hidden" id="user_profile_id" name="user_profile_id" value="{{ $note_details->user_profile_id }}">
                 <input type="hidden" id="notes_id" name="notes_id" value="{{ $id }}">
@@ -78,7 +78,7 @@
   $("#js_user_create_note").submit(function(e){
 
     e.preventDefault();
-    let note = $("#note").val();
+    let note_text = $("#note_text").val();
     let user_profile_id = $("#user_profile_id").val();
     let notes_id = $("#notes_id").val();
     let _token = $("input[name=_token]").val();
@@ -88,7 +88,7 @@
       url:"{{ route('edit-note') }}",
       type:"POST",
       data:{
-        note:note,
+        note_text:note_text,
         user_profile_id:user_profile_id,
         notes_id:notes_id,
         _token:_token

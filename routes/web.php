@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\NotesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/register',[App\Http\Controllers\UserController::class,'register'])->name('register');
 Route::get('/index',[App\Http\Controllers\UserController::class,'index'])->name('index');
-Route::post('/register-user',[App\Http\Controllers\UserController::class,'registerUser'])->name('register-user');
+Route::post('/register-user',[App\Http\Controllers\API\AuthController::class,'registerUser'])->name('register-user');
 Route::post('/login-user',[App\Http\Controllers\UserController::class,'loginUser'])->name('login-user');
 Route::get('/home',[App\Http\Controllers\UserController::class,'home'])->name('home');  
 Route::get('/create/{id}',[App\Http\Controllers\NotesController::class,'create'])->name('create');

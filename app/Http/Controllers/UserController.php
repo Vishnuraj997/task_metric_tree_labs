@@ -45,9 +45,9 @@ class UserController extends Controller
       $user_profile->user_id=$user->id;
       $result=$user_profile->save();
       if($res && $result){
-        return back()->with('success','You have Registered successfully');
+        return response()->json(['message','You have Registered successfully'],200);
       }else{
-        return back()->with('fail','Something went wrong');
+        return response()->json('fail','Something went wrong');
       }
 
     }

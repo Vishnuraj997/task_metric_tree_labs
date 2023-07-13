@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Laravel\Sanctum\HasApiTokens;
 class UserProfile extends Model
 {
-    use HasFactory;
+    use HasFactory,HasApiTokens;
     protected $table='users_profile';
 
 
@@ -16,4 +16,9 @@ class UserProfile extends Model
         'last_name',
         'address',
     ];
+
+    public function userprofileid()
+    {
+       return $this->hasMany(User::class,'id','id');
+    }
 }

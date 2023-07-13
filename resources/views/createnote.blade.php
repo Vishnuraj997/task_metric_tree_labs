@@ -79,10 +79,10 @@
   $("#js_user_create_note").submit(function(e){
 
     e.preventDefault();
-    let note = $("#note").val();
+    let note_text = $("#note").val();
     let user_profile_id = $("#user_profile_id").val();
     let user_id = $("#user_id").val();
-    console.log(user_id)
+    var returnUrl = "{{ route('home') }}";
     let _token = $("input[name=_token]").val();
 
     $.ajax({
@@ -90,7 +90,7 @@
       url:"{{ route('create-note') }}",
       type:"POST",
       data:{
-        note:note,
+        note_text:note_text,
         user_profile_id:user_profile_id,
         user_id:user_id,
         _token:_token
@@ -98,6 +98,7 @@
 
       success:function(response){
           swal(response.message);
+          window.location.href = returnUrl;
           $("#js_user_create_note")[0].reset();
       }
 

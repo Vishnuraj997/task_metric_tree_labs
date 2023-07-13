@@ -53,6 +53,7 @@
             background-color: #45a049;
         }
     </style>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 
@@ -74,27 +75,27 @@
             <div class="form-group">
                 <label for="firstname">First name:</label>
                 <input type="text" id="firstname" name="firstname" placeholder="Enter your first name" value="{{old('firstname')}}">
-                <span class="text-danger">@error('firstname') {{ $message}} @enderror</span>
+            
             </div>
             <div class="form-group">
                 <label for="lastname">Last name:</label>
                 <input type="text" id="lastname" name="lastname" placeholder="Enter your Last name" value="{{old('lastname')}}">
-                <span class="text-danger">@error('lastname') {{ $message}} @enderror</span>
+               
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" value="{{old('email')}}">
-                <span class="text-danger">@error('email') {{ $message}} @enderror</span>
+               
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" >
-                <span class="text-danger">@error('password') {{ $message}} @enderror</span>
+               
             </div>
             <div class="form-group">
                 <label for="address">Address:</label>
                 <textarea  id="address" name="address" placeholder="Enter your Address" rows="4" cols="50"></textarea>
-                <span class="text-danger">@error('address') {{ $message}} @enderror</span>
+    
             </div>
             <div class="form-group">
                <button type="submit" class="btn btn-primary" id="js_user_save">Save
@@ -106,7 +107,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-<script src="{{ asset('js/registration/index.js') }}?v=5"></script>
 </body>
 </html>
