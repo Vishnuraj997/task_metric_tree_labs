@@ -42,10 +42,9 @@ class UserController extends Controller
       $user_profile->first_name=$request->firstname;
       $user_profile->last_name=$request->lastname;
       $user_profile->address=$request->address;
-      $user_profile->user_id=$user->id;
       $result=$user_profile->save();
       if($res && $result){
-        return response()->json(['message','You have Registered successfully'],200);
+        return redirect('index');
       }else{
         return response()->json('fail','Something went wrong');
       }
@@ -69,7 +68,6 @@ class UserController extends Controller
             }else{
                 return back()->with('fail','password is incorrect');
             }
-            return back()->with('success','You have Logged successfully');
          }else{
             return back()->with('fail','email is incorrect');
          }
@@ -82,9 +80,12 @@ class UserController extends Controller
       return view('home',compact('user_id','mynotes'));
     }
 
-    public function destory()
+    public function destory(Request $request)
     {
         Auth::logout();
+        $request->session()->forget('key');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('index');
     }
 }

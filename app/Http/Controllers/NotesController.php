@@ -52,8 +52,8 @@ class NotesController extends Controller
 
    public function editnote(Request $request)
    {
-      $note_details=Note::where('id',$request->notes_id)->update(['note_text' => $request->note]);
-      return $note_details;
+      $note_details=Note::where('notes_id',$request->notes_id)->update(['note_text' => $request->note_text]);
+      return redirect('home');
    }
 
 

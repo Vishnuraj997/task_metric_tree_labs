@@ -82,7 +82,7 @@
     let note_text = $("#note").val();
     let user_profile_id = $("#user_profile_id").val();
     let user_id = $("#user_id").val();
-    var returnUrl = "{{ route('home') }}";
+    // var returnUrl = "{{ route('home') }}";
     let _token = $("input[name=_token]").val();
 
     $.ajax({
